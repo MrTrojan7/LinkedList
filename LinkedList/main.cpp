@@ -26,11 +26,25 @@ int main()
 	a.Print();
 	a.SortDesc();
 	a.Print();
-	a.Shuffle();
+	//a.Shuffle();
 	a.Print();
 
-
-
+	SinglyLinkedList b;
+	//b = a.Clone();
+	cout << "clone\n";
+	b.Print();
+	a.Equals(b);
+	a.MergeWith(b);
+	cout << "merge\n";
+	a.Print();
+	b.Print();
+	b = a;
+	a.Print();
+	b.Print();
+	//cout << b[5] << "\n";
+	a += b;
+	a.Print();
+	b.Print();
 
 	return 0;
 }

@@ -306,3 +306,132 @@ void SinglyLinkedList::Shuffle()
 		arr = nullptr;
 	}
 }
+
+bool SinglyLinkedList::Equals(const SinglyLinkedList& list)
+{
+	if (IsEmpty() && list.IsEmpty())
+		return true;
+	if (GetCount() != list.GetCount())
+		return false;
+	Node* left = head;
+	Node* right = list.head;
+	while (left != nullptr && right != nullptr)
+	{
+		if (left->data != right->data)
+			return false;
+		left = left->next;
+		right = right->next;
+	}
+	//cout << "list is equal\n";
+	return true;
+}
+
+SinglyLinkedList SinglyLinkedList::Clone()
+{
+	SinglyLinkedList copy;
+	Node* temp = head;
+	while (temp != nullptr)
+	{
+		copy.AddToTail(temp->data);
+		temp = temp->next;
+	}
+	return copy;
+}
+
+void SinglyLinkedList::MergeWith(const SinglyLinkedList& list)
+{
+	if (list.IsEmpty())
+		return;
+	Node* copy = list.head;
+	while (copy != nullptr)
+	{
+		AddToTail(copy->data);
+		copy = copy->next;
+	}
+}
+
+bool SinglyLinkedList::operator>(const SinglyLinkedList& list) const
+{
+	return GetCount() > list.GetCount();
+}
+
+bool SinglyLinkedList::operator<(const SinglyLinkedList& list) const
+{
+	return GetCount() < list.GetCount();
+}
+
+bool SinglyLinkedList::operator>=(const SinglyLinkedList& list) const
+{
+	return GetCount() >= list.GetCount();
+}
+
+bool SinglyLinkedList::operator<=(const SinglyLinkedList& list) const
+{
+	return GetCount() <= list.GetCount();
+}
+
+bool SinglyLinkedList::operator==(const SinglyLinkedList& list) const
+{
+	return GetCount() == list.GetCount();
+}
+
+bool SinglyLinkedList::operator!=(const SinglyLinkedList& list) const
+{
+	return GetCount() != list.GetCount();
+}
+
+void SinglyLinkedList::operator=(const SinglyLinkedList& list)
+{
+	cout << "operator =\n";
+	if (Equals(list))
+		return;
+	Clear();
+	Node* temp = list.head;
+	while (temp != nullptr)
+	{
+		AddToTail(temp->data);
+		temp = temp->next;
+	}
+}
+
+int SinglyLinkedList::operator[](int index)
+{
+	if(!IsValidIndex(index))
+		return -1;
+	Node* temp = head;
+	int i = 0;
+	while (temp != nullptr)
+	{
+		if (i == index)
+			return temp->data;
+		temp = temp->next;
+		++i;
+	}
+}
+
+SinglyLinkedList::operator int* ()
+{
+	return ToArray();
+}
+
+SinglyLinkedList SinglyLinkedList::operator+(const SinglyLinkedList& list)
+{
+	SinglyLinkedList res;
+	res.MergeWith(*this);
+	res.MergeWith(list);
+	return res;
+}
+
+SinglyLinkedList SinglyLinkedList::operator+=(const SinglyLinkedList& list)
+{
+	MergeWith(list);
+	cout << "operator +=\n";
+	Print();
+	return *this;
+}
+
+//SinglyLinkedList::SinglyLinkedList(const SinglyLinkedList& list)
+//{
+//	cout << "copy c-tor\n";
+//	operator =(list);
+//}

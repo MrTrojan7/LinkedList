@@ -41,6 +41,18 @@ public:
 	bool Equals(const SinglyLinkedList& list);
 	SinglyLinkedList Clone();
 	void MergeWith(const SinglyLinkedList& list);
+	bool operator > (const SinglyLinkedList& list) const;
+	bool operator < (const SinglyLinkedList& list) const;
+	bool operator >= (const SinglyLinkedList& list) const;
+	bool operator <= (const SinglyLinkedList& list) const;
+	bool operator == (const SinglyLinkedList& list) const;
+	bool operator != (const SinglyLinkedList& list) const;
+	void operator = (const SinglyLinkedList& list);
+	int operator [] (int index);
+	operator int* ();
+	SinglyLinkedList operator +(const SinglyLinkedList& list);
+	SinglyLinkedList operator +=(const SinglyLinkedList& list);
+	//SinglyLinkedList (const SinglyLinkedList& list);
 
 };
 
