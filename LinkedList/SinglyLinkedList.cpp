@@ -142,7 +142,7 @@ void SinglyLinkedList::Clear()
 
 void SinglyLinkedList::Print() const
 {
-	if (count == 0)
+	if (IsEmpty())
 	{
 		cout << "Empty list!\n";
 		return;
@@ -163,7 +163,7 @@ int SinglyLinkedList::GetCount() const
 
 int SinglyLinkedList::IndexOf(int data) const
 {
-	if (count == 0)
+	if (IsEmpty())
 		return -1;
 	Node* temp = head;
 	int i = 0;
@@ -322,7 +322,6 @@ bool SinglyLinkedList::Equals(const SinglyLinkedList& list)
 		left = left->next;
 		right = right->next;
 	}
-	//cout << "list is equal\n";
 	return true;
 }
 
@@ -382,7 +381,6 @@ bool SinglyLinkedList::operator!=(const SinglyLinkedList& list) const
 
 void SinglyLinkedList::operator=(const SinglyLinkedList& list)
 {
-	cout << "operator =\n";
 	if (Equals(list))
 		return;
 	Clear();
@@ -407,6 +405,7 @@ int SinglyLinkedList::operator[](int index)
 		temp = temp->next;
 		++i;
 	}
+	return -1;
 }
 
 SinglyLinkedList::operator int* ()
@@ -425,7 +424,6 @@ SinglyLinkedList SinglyLinkedList::operator+(const SinglyLinkedList& list)
 SinglyLinkedList SinglyLinkedList::operator+=(const SinglyLinkedList& list)
 {
 	MergeWith(list);
-	cout << "operator +=\n";
 	Print();
 	return *this;
 }

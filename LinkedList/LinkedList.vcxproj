@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DoublyLinkedList.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SinglyLinkedList.cpp" />
     <ClCompile Include="Sorter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllLibraries.h" />
+    <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="SinglyLinkedList.h" />
     <ClInclude Include="Sorter.h" />
   </ItemGroup>
